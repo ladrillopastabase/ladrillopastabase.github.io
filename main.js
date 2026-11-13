@@ -1,7 +1,6 @@
 // Configuración: pega aquí tu URL de LinkedIn cuando la tengas.
 const LINKEDIN_URL = "";
 const GH_USER = "ladrillopastabase";
-const EXCLUDE = ["ladrillopastabase.github.io", "ladrillopastabasee.github.io"];
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -86,73 +85,15 @@ if (!reduceMotion) {
 
 /* ---------- GitHub: repos + README, se actualiza solo ---------- */
 const LANG_COLORS = { JavaScript: "#e9c400", TypeScript: "#3178c6", Python: "#3572a5", HTML: "#e34c26", CSS: "#663399", Java: "#b07219" };
-const CACHE_KEY = "gh-portfolio-v2";
-const CACHE_MS = 30 * 60 * 1000;
-
 function esc(s) {
     return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
-// Título (# ...) y primer párrafo del README, sin markdown.
-function parseReadme(md) {
-    const clean = (s) => s
-        .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
-        .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
-        .replace(/<[^>]+>/g, "")
-        .replace(/(\*\*|__|\*|_|`)/g, "")
-        .replace(/^[^\p{L}\p{N}¿¡]+|[^\p{L}\p{N}.!?)]+$/gu, "")
-        .trim();
-    let title = "", para = [];
-    for (const line of md.replace(/\r/g, "").split("\n")) {
-        const l = line.trim();
-        if (!title && /^#\s+/.test(l)) { title = clean(l.replace(/^#\s+/, "")); continue; }
-        if (!l || /^(#|\[!\[|!\[|<|```|[-*+]\s|\d+\.\s|>|\|)/.test(l)) {
-            if (para.length) break;
-            continue;
-        }
-        para.push(l);
-    }
-    return { title, desc: clean(para.join(" ")) };
-}
-
-function readCache(maxAge) {
-    try {
-        const c = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
-        if (c && Date.now() - c.t < maxAge) return c.data;
-    } catch {}
-    return null;
-}
-
+// repos.json lo genera la GitHub Action cada 2 horas (scripts/build-repos.mjs).
 async function loadRepos() {
-    const cached = readCache(CACHE_MS);
-    if (cached) return cached;
-    try {
-        const res = await fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=pushed`);
-        if (!res.ok) throw new Error(res.status);
-        const repos = (await res.json()).filter((r) => !r.fork && !r.archived && !EXCLUDE.includes(r.name));
-        const data = await Promise.all(repos.map(async (r) => {
-            let readme = { title: "", desc: "" };
-            try {
-                const rr = await fetch(`https://api.github.com/repos/${r.full_name}/readme`, { headers: { Accept: "application/vnd.github.raw" } });
-                if (rr.ok) readme = parseReadme(await rr.text());
-            } catch {}
-            return {
-                title: readme.title || r.name.replace(/[-_]/g, " "),
-                desc: r.description || readme.desc,
-                url: r.html_url,
-                demo: r.homepage || (r.has_pages ? `https://${GH_USER}.github.io/${r.name}/` : ""),
-                lang: r.language,
-                created: r.created_at,
-                pushed: r.pushed_at,
-            };
-        }));
-        try { localStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), data })); } catch {}
-        return data;
-    } catch (err) {
-        const stale = readCache(Infinity);
-        if (stale) return stale;
-        throw err;
-    }
+    const res = await fetch("repos.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error(res.status);
+    return res.json();
 }
 
 function timeAgo(iso) {
