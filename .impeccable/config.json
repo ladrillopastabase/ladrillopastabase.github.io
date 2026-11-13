@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-13T18:50:42.488Z",
+        "reason": "user brief asked for 'muchas animaciones, muy llamativo'; tools band pauses on hover, skeleton shimmer only while loading, both off under reduced motion"
+      }
+    ]
+  }
+}

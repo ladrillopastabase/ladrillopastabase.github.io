@@ -4,176 +4,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fernando Véliz - Portafolio</title>
+    <title>Fernando Véliz · Portafolio</title>
+    <meta name="description" content="Ingeniero Civil Industrial: mantenimiento, mejora continua y optimización de costos. También construyo herramientas y juegos web.">
+    <meta name="theme-color" content="#070b1a">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
-    <!-- Anime.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="main.js" defer></script>
 </head>
 
 <body>
-    <nav class="sidebar">
-        <a href="#">Inicio</a>
-        <a href="#">Proyectos</a>
-        <a href="#">Contacto</a>
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="progress" aria-hidden="true"></div>
+
+    <nav class="sidebar" aria-label="Principal">
+        <a href="#inicio" class="nav-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+            <span>Inicio</span>
+        </a>
+        <a href="#proyectos" class="nav-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10l5 3V10l5 3V6l4 2v13"/></svg>
+            <span>Industria</span>
+        </a>
+        <a href="#github" class="nav-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg>
+            <span>Código</span>
+        </a>
+        <a href="#contacto" class="nav-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM3 6l9 7 9-7"/></svg>
+            <span>Contacto</span>
+        </a>
     </nav>
 
     <main>
-        <!-- Fondo -->
-        <canvas id="bgCanvas"></canvas>
-
-
-        <section id="descripcion">
+        <section id="inicio" class="hero">
             <div class="title">
-                <span>Ingeniero Civil Industrial</span>
-                <h1>Transformando desafíos en eficiencia y resultados.</h1>
-                <p>Ingeniero Civil Industrial con enfoque en mantenimiento, mejora continua y optimización de costos en
-                    la
-                    industria.</p>
-                <div class="par-botones">
-                    <button>Ver Proyectos</button>
-                    <button>Ver CV</button>
+                <p class="role" data-reveal>Ingeniero Civil Industrial <span class="amp">+</span> desarrollador web</p>
+                <h1 class="split">Transformando <em class="hl hl-amber">desafíos</em> en <em class="hl hl-cyan">eficiencia</em> y resultados.</h1>
+                <p class="lead" data-reveal>Ingeniero Civil Industrial con enfoque en mantenimiento, mejora continua y optimización de costos en la industria. En paralelo, construyo herramientas y juegos web que publico en GitHub.</p>
+                <div class="par-botones" data-reveal>
+                    <a class="btn btn-primary magnetic" href="#proyectos">Ver proyectos</a>
+                    <a class="btn btn-ghost magnetic" data-linkedin href="#">Ver CV</a>
                 </div>
             </div>
-            <div class="about glass">
-                <img id="pfp" src="bart.jpg" alt="">
+
+            <aside class="about glass tilt" data-reveal>
+                <div class="avatar">
+                    <img id="pfp" src="bart.jpg" alt="Foto de perfil de Fernando Véliz" width="112" height="112">
+                </div>
                 <h2>Fernando Véliz</h2>
-                <p>Región de Coquimbo, Chile</p>
-                <p>fernando.jvelizv@gmail.com</p>
+                <p class="muted">Región de Coquimbo, Chile</p>
+                <button class="email" type="button" data-copy="fernando.jvelizv@gmail.com">
+                    fernando.jvelizv@gmail.com
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg>
+                </button>
                 <div class="par-botones">
-                    <button>LinkedIn</button>
-                    <button>Github</button>
+                    <a class="btn btn-small magnetic" data-linkedin href="#">LinkedIn</a>
+                    <a class="btn btn-small magnetic" href="https://github.com/ladrillopastabase" target="_blank" rel="noopener">GitHub</a>
                 </div>
-            </div>
+                <span class="status"><i></i> Abierto a oportunidades</span>
+            </aside>
         </section>
-        <section id="resultados">
+
+        <div class="marquee" aria-label="Herramientas">
+            <div class="lane lane-amber"><div class="track" id="laneIndustry"></div></div>
+            <div class="lane lane-cyan reverse"><div class="track" id="laneCode"></div></div>
+        </div>
+
+        <section id="resultados" aria-label="Estadísticas de GitHub">
             <div class="metrics glass">
-                <div class="metric">
-                    <h3>1</h3>
-                    <p>Reducción de gastos</p>
-                </div>
-                <div class="metric">
-                    <h3>2</h3>
-                    <p>Reducción de mantencion</p>
-                </div>
-                <div class="metric">
-                    <h3>3</h3>
-                    <p>datos</p>
-                </div>
-                <div class="metric">
-                    <h3>4</h3>
-                    <p>km/h</p>
-                </div>
+                <div class="metric"><h3 data-stat="repos">0</h3><p>repositorios públicos</p></div>
+                <div class="metric"><h3 data-stat="pages">0</h3><p>con demo en vivo</p></div>
+                <div class="metric"><h3 data-stat="langs">0</h3><p>lenguajes</p></div>
+                <div class="metric"><h3 data-stat="days">0</h3><p data-stat-label="days">días desde el último commit</p></div>
             </div>
         </section>
-        <section id="proyectos">
+
+        <section id="proyectos" class="side side-amber">
             <div class="titular-proyectos">
-                <h2>Proyectos destacados</h2>
-                <span id="ver-todo-proyecto">Ver todos los proyectos</span>
+                <h2 class="wipe">Proyectos destacados</h2>
+                <span class="side-tag">Industria</span>
             </div>
             <div class="contenedor-proyectos">
-                <div class="proyecto glass">
-                    <div class="tag">
-                        <img src="" alt="">
-                        <span>Mejora Continua</span>
-                    </div>
-                    <h4>Optimización de Costos Planta de Producción</h4>
-                    <p>Reducción de un 40% del gasto de mantencion mediante analisis de procesos.</p>
-                    <p>Ver Proyecto</p>
-                </div>
-                <div class="proyecto glass">
-                    <div class="tag">
-                        <img src="" alt="">
-                        <span>Mantenimiento</span>
-                    </div>
-                    <h4>Optimización de Costos Planta de Producción</h4>
-                    <p>Reducción de un 40% del gasto de mantencion mediante analisis de procesos.</p>
-                    <p>Ver Proyecto</p>
-                </div>
-                <div class="proyecto glass">
-                    <div class="tag">
-                        <img src="" alt="">
-                        <span>5S</span>
-                    </div>
-                    <h4>Optimización de Costos Planta de Producción</h4>
-                    <p>Reducción de un 40% del gasto de mantencion mediante analisis de procesos.</p>
-                    <p>Ver Proyecto</p>
-                </div>
-                <div class="proyecto glass">
-                    <div class="tag">
-                        <img src="" alt="">
-                        <span>Análisis</span>
-                    </div>
-                    <h4>Optimización de Costos Planta de Producción</h4>
-                    <p>Reducción de un 40% del gasto de mantencion mediante analisis de procesos.</p>
-                    <p>Ver Proyecto</p>
-                </div>
-
+                <article class="proyecto glass tilt" data-reveal>
+                    <span class="tag">Mejora Continua</span>
+                    <h3>Optimización de Costos Planta de Producción</h3>
+                    <p>Reducción de un 40% del gasto de mantención mediante análisis de procesos.</p>
+                    <a class="more" href="#">Ver proyecto</a>
+                </article>
+                <article class="proyecto glass tilt" data-reveal>
+                    <span class="tag">Mantenimiento</span>
+                    <h3>Optimización de Costos Planta de Producción</h3>
+                    <p>Reducción de un 40% del gasto de mantención mediante análisis de procesos.</p>
+                    <a class="more" href="#">Ver proyecto</a>
+                </article>
+                <article class="proyecto glass tilt" data-reveal>
+                    <span class="tag">5S</span>
+                    <h3>Optimización de Costos Planta de Producción</h3>
+                    <p>Reducción de un 40% del gasto de mantención mediante análisis de procesos.</p>
+                    <a class="more" href="#">Ver proyecto</a>
+                </article>
+                <article class="proyecto glass tilt" data-reveal>
+                    <span class="tag">Análisis</span>
+                    <h3>Optimización de Costos Planta de Producción</h3>
+                    <p>Reducción de un 40% del gasto de mantención mediante análisis de procesos.</p>
+                    <a class="more" href="#">Ver proyecto</a>
+                </article>
             </div>
         </section>
 
-        <script>
-            const canvas = document.getElementById("bgCanvas");
-            const ctx = canvas.getContext("2d");
+        <section id="github" class="side side-cyan">
+            <div class="titular-proyectos">
+                <h2 class="wipe">Lo que construyo en GitHub</h2>
+                <a class="side-tag" id="ver-todo-proyecto" href="https://github.com/ladrillopastabase?tab=repositories" target="_blank" rel="noopener">Ver todos los repos</a>
+            </div>
+            <p class="section-lead">Se actualiza solo: cada repositorio público aparece aquí con la descripción de su README.</p>
+            <div class="repos" id="repos" aria-live="polite">
+                <div class="repo glass skeleton"></div>
+                <div class="repo glass skeleton"></div>
+                <div class="repo glass skeleton"></div>
+            </div>
+        </section>
 
-            const speed = 6;
+        <section id="contacto" class="cta">
+            <h2 class="split">¿Te interesa mi perfil?</h2>
+            <p class="lead" data-reveal>Revisa mi CV completo o escríbeme directamente.</p>
+            <div class="par-botones" data-reveal>
+                <a class="btn btn-primary btn-big magnetic" data-linkedin href="#">Ver CV en LinkedIn</a>
+                <button class="btn btn-ghost btn-big magnetic" type="button" data-copy="fernando.jvelizv@gmail.com">Copiar email</button>
+            </div>
+        </section>
 
-
-
-            let blobs = [];
-
-            // Ajustar tamaño pantalla
-            function resize() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            resize();
-            window.addEventListener("resize", resize);
-
-            // Crear blobs
-            for (let i = 0; i < 5; i++) {
-                blobs.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    r: 200 + Math.random() * 150,
-                    dx: (Math.random() - 0.5) * speed,
-                    dy: (Math.random() - 0.5) * speed
-                });
-            }
-
-            // Animación
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                blobs.forEach(b => {
-                    b.x += b.dx;
-                    b.y += b.dy;
-
-                    // rebote en bordes
-                    if (b.x < 0 || b.x > canvas.width) b.dx *= -1;
-                    if (b.y < 0 || b.y > canvas.height) b.dy *= -1;
-
-                    let gradient = ctx.createRadialGradient(
-                        b.x, b.y, 0,
-                        b.x, b.y, b.r
-                    );
-
-                    gradient.addColorStop(0, "rgba(0, 200, 255, 0.25)");
-                    gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
-
-                    ctx.fillStyle = gradient;
-                    ctx.beginPath();
-                    ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-                    ctx.fill();
-                });
-
-                requestAnimationFrame(animate);
-            }
-
-            // 🔥 IMPORTANTE: iniciar animación
-            animate();
-        </script>
+        <footer>
+            <span>© <span id="year"></span> Fernando Véliz</span>
+            <span>Región de Coquimbo, Chile</span>
+        </footer>
     </main>
+
+    <div class="toast" role="status" aria-live="polite"></div>
 </body>
 
 </html>
