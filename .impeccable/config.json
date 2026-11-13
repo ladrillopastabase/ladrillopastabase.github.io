@@ -4,13 +4,13 @@
     "ignoreFiles": [],
     "ignoreValues": [
       {
-        "rule": "marquee",
+        "rule": "cramped-padding",
         "value": "*",
         "files": [
           "index.html"
         ],
-        "createdAt": "2026-11-13T18:50:42.488Z",
-        "reason": "user brief asked for 'muchas animaciones, muy llamativo'; tools band pauses on hover, skeleton shimmer only while loading, both off under reduced motion"
+        "createdAt": "2026-11-13T19:00:17.245Z",
+        "reason": "model: .contact has clamp(36px..72px) padding, verified in desktop/mobile captures"
       }
     ]
   }

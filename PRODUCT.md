@@ -30,8 +30,8 @@ Static site on GitHub Pages (repo `ladrillopastabasee.github.io`). The GitHub pr
 - Industrial project cards are placeholders (same title repeated); no real figures. The user chose not to lead with numbers: do not invent metrics; use real GitHub stats instead.
 
 ## Brand Commitments
-- Keep the existing identity: dark ground, animated colour blobs, glass panels. Improve colour and style, do not replace it.
-- Motion-heavy and eye-catching by explicit request ("usar siempre muchas animaciones, muy llamativo").
+- Visual direction pinned by the user (2026-11-13): "diseño claro, elegante, glassy futurista". The earlier dark neon version was rejected as AI slop.
+- Motion is wanted, but refined: the user called the first round of effects (word blur, tilt, magnetic buttons, marquee, spinning ring) "las peores animaciones". Fewer, slower, purposeful.
 - Spanish copy.
 
 ## Product Principles

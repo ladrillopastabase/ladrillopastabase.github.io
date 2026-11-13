@@ -6,134 +6,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fernando Véliz · Portafolio</title>
     <meta name="description" content="Ingeniero Civil Industrial: mantenimiento, mejora continua y optimización de costos. También construyo herramientas y juegos web.">
-    <meta name="theme-color" content="#070b1a">
+    <meta name="theme-color" content="#eef1f6">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500;600&family=Funnel+Sans:wght@400;500;600&family=Martian+Mono:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
 </head>
 
 <body>
-    <canvas id="bgCanvas" aria-hidden="true"></canvas>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="progress" aria-hidden="true"></div>
+    <div class="field" aria-hidden="true">
+        <i class="f1"></i><i class="f2"></i><i class="f3"></i><i class="f4"></i>
+    </div>
 
-    <nav class="sidebar" aria-label="Principal">
-        <a href="#inicio" class="nav-link">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
-            <span>Inicio</span>
-        </a>
-        <a href="#proyectos" class="nav-link">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10l5 3V10l5 3V6l4 2v13"/></svg>
-            <span>Industria</span>
-        </a>
-        <a href="#github" class="nav-link">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg>
-            <span>Código</span>
-        </a>
-        <a href="#contacto" class="nav-link">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM3 6l9 7 9-7"/></svg>
-            <span>Contacto</span>
-        </a>
-    </nav>
+    <header class="nav glass">
+        <a class="brand" href="#inicio">Fernando Véliz</a>
+        <nav aria-label="Secciones">
+            <span class="indicator" aria-hidden="true"></span>
+            <a href="#industria">Industria</a>
+            <a href="#github">Proyectos</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+        <a class="btn btn-ink btn-sm" data-linkedin href="#">Ver CV</a>
+    </header>
 
     <main>
         <section id="inicio" class="hero">
-            <div class="title">
-                <p class="role" data-reveal>Ingeniero Civil Industrial <span class="amp">+</span> desarrollador web</p>
-                <h1 class="split">Transformando <em class="hl hl-amber">desafíos</em> en <em class="hl hl-cyan">eficiencia</em> y resultados.</h1>
-                <p class="lead" data-reveal>Ingeniero Civil Industrial con enfoque en mantenimiento, mejora continua y optimización de costos en la industria. En paralelo, construyo herramientas y juegos web que publico en GitHub.</p>
-                <div class="par-botones" data-reveal>
-                    <a class="btn btn-primary magnetic" href="#proyectos">Ver proyectos</a>
-                    <a class="btn btn-ghost magnetic" data-linkedin href="#">Ver CV</a>
+            <div class="hero-copy">
+                <h1 class="enter">Transformando desafíos en eficiencia y resultados.</h1>
+                <p class="lead enter">Ingeniero Civil Industrial con enfoque en mantenimiento, mejora continua y optimización de costos en la industria. En paralelo, construyo herramientas y juegos web que publico en GitHub.</p>
+                <div class="actions">
+                    <a class="btn btn-ink enter" href="#github">
+                        Ver proyectos
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                    <a class="btn btn-glass enter" data-linkedin href="#">Ver CV</a>
                 </div>
             </div>
 
-            <aside class="about glass tilt" data-reveal>
-                <div class="avatar">
-                    <img id="pfp" src="bart.jpg" alt="Foto de perfil de Fernando Véliz" width="112" height="112">
+            <aside class="profile glass sheen enter" aria-label="Perfil">
+                <img src="bart.jpg" alt="Avatar de Fernando Véliz" width="96" height="96">
+                <div>
+                    <h2>Fernando Véliz</h2>
+                    <p>Ingeniero Civil Industrial</p>
+                    <p>Región de Coquimbo, Chile</p>
                 </div>
-                <h2>Fernando Véliz</h2>
-                <p class="muted">Región de Coquimbo, Chile</p>
-                <button class="email" type="button" data-copy="fernando.jvelizv@gmail.com">
-                    fernando.jvelizv@gmail.com
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg>
+                <button class="copy" type="button" data-copy="fernando.jvelizv@gmail.com">
+                    <span>fernando.jvelizv@gmail.com</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></svg>
                 </button>
-                <div class="par-botones">
-                    <a class="btn btn-small magnetic" data-linkedin href="#">LinkedIn</a>
-                    <a class="btn btn-small magnetic" href="https://github.com/ladrillopastabase" target="_blank" rel="noopener">GitHub</a>
+                <div class="profile-links">
+                    <a class="btn btn-glass btn-sm" data-linkedin href="#">LinkedIn</a>
+                    <a class="btn btn-glass btn-sm" href="https://github.com/ladrillopastabase" target="_blank" rel="noopener">GitHub</a>
                 </div>
-                <span class="status"><i></i> Abierto a oportunidades</span>
             </aside>
         </section>
 
-        <div class="marquee" aria-label="Herramientas">
-            <div class="lane lane-amber"><div class="track" id="laneIndustry"></div></div>
-            <div class="lane lane-cyan reverse"><div class="track" id="laneCode"></div></div>
-        </div>
-
-        <section id="resultados" aria-label="Estadísticas de GitHub">
-            <div class="metrics glass">
-                <div class="metric"><h3 data-stat="repos">0</h3><p>repositorios públicos</p></div>
-                <div class="metric"><h3 data-stat="pages">0</h3><p>con demo en vivo</p></div>
-                <div class="metric"><h3 data-stat="langs">0</h3><p>lenguajes</p></div>
-                <div class="metric"><h3 data-stat="days">0</h3><p data-stat-label="days">días desde el último commit</p></div>
+        <section id="industria" class="block">
+            <div class="block-head">
+                <h2>Proyectos destacados</h2>
+                <p>Mantenimiento, mejora continua y análisis de procesos en planta.</p>
+            </div>
+            <div class="industry">
+                <article class="case glass sheen reveal">
+                    <h3>Optimización de Costos Planta de Producción</h3>
+                    <p>Reducción de un 40% del gasto de mantención mediante análisis de procesos.</p>
+                    <span class="area">Mejora Continua</span>
+                </article>
+                <ul class="areas glass reveal">
+                    <li><span>Mantenimiento</span><em>Caso por documentar</em></li>
+                    <li><span>5S</span><em>Caso por documentar</em></li>
+                    <li><span>Análisis</span><em>Caso por documentar</em></li>
+                </ul>
             </div>
         </section>
 
-        <section id="proyectos" class="side side-amber">
-            <div class="titular-proyectos">
-                <h2 class="wipe">Proyectos destacados</h2>
-                <span class="side-tag">Industria</span>
+        <section id="github" class="block">
+            <div class="block-head">
+                <h2>Lo que construyo en GitHub</h2>
+                <p>Herramientas y juegos web. Esta lista se actualiza sola con cada repositorio público.</p>
             </div>
-            <div class="contenedor-proyectos">
-                <article class="proyecto glass tilt" data-reveal>
-                    <span class="tag">Mejora Continua</span>
-                    <h3>Optimización de Costos Planta de Producción</h3>
-                    <p>Reducción de un 40% del gasto de mantención mediante análisis de procesos.</p>
-                    <a class="more" href="#">Ver proyecto</a>
-                </article>
-                <article class="proyecto glass tilt" data-reveal>
-                    <span class="tag">Mantenimiento</span>
-                    <h3>Optimización de Costos Planta de Producción</h3>
-                    <p>Reducción de un 40% del gasto de mantención mediante análisis de procesos.</p>
-                    <a class="more" href="#">Ver proyecto</a>
-                </article>
-                <article class="proyecto glass tilt" data-reveal>
-                    <span class="tag">5S</span>
-                    <h3>Optimización de Costos Planta de Producción</h3>
-                    <p>Reducción de un 40% del gasto de mantención mediante análisis de procesos.</p>
-                    <a class="more" href="#">Ver proyecto</a>
-                </article>
-                <article class="proyecto glass tilt" data-reveal>
-                    <span class="tag">Análisis</span>
-                    <h3>Optimización de Costos Planta de Producción</h3>
-                    <p>Reducción de un 40% del gasto de mantención mediante análisis de procesos.</p>
-                    <a class="more" href="#">Ver proyecto</a>
-                </article>
-            </div>
+
+            <dl class="stats glass reveal" aria-label="Actividad en GitHub">
+                <div><dt>Repositorios</dt><dd data-stat="repos">—</dd></div>
+                <div><dt>Con demo en vivo</dt><dd data-stat="pages">—</dd></div>
+                                <div><dt>Último commit</dt><dd data-stat="last">—</dd></div>
+            </dl>
+
+            <ul class="repos glass reveal" id="repos" aria-live="polite">
+                <li class="repo is-loading"><span></span><span></span></li>
+                <li class="repo is-loading"><span></span><span></span></li>
+                <li class="repo is-loading"><span></span><span></span></li>
+            </ul>
+
+            <a class="all" href="https://github.com/ladrillopastabase?tab=repositories" target="_blank" rel="noopener">
+                Ver todos los repositorios en GitHub
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
         </section>
 
-        <section id="github" class="side side-cyan">
-            <div class="titular-proyectos">
-                <h2 class="wipe">Lo que construyo en GitHub</h2>
-                <a class="side-tag" id="ver-todo-proyecto" href="https://github.com/ladrillopastabase?tab=repositories" target="_blank" rel="noopener">Ver todos los repos</a>
-            </div>
-            <p class="section-lead">Se actualiza solo: cada repositorio público aparece aquí con la descripción de su README.</p>
-            <div class="repos" id="repos" aria-live="polite">
-                <div class="repo glass skeleton"></div>
-                <div class="repo glass skeleton"></div>
-                <div class="repo glass skeleton"></div>
-            </div>
-        </section>
-
-        <section id="contacto" class="cta">
-            <h2 class="split">¿Te interesa mi perfil?</h2>
-            <p class="lead" data-reveal>Revisa mi CV completo o escríbeme directamente.</p>
-            <div class="par-botones" data-reveal>
-                <a class="btn btn-primary btn-big magnetic" data-linkedin href="#">Ver CV en LinkedIn</a>
-                <button class="btn btn-ghost btn-big magnetic" type="button" data-copy="fernando.jvelizv@gmail.com">Copiar email</button>
+        <section id="contacto" class="contact glass sheen reveal">
+            <h2>¿Te interesa mi perfil?</h2>
+            <p>Revisa mi CV completo o escríbeme directamente.</p>
+            <div class="actions">
+                <a class="btn btn-ink" data-linkedin href="#">Ver CV en LinkedIn</a>
+                <button class="btn btn-glass" type="button" data-copy="fernando.jvelizv@gmail.com">Copiar email</button>
             </div>
         </section>
 
@@ -143,7 +120,7 @@
         </footer>
     </main>
 
-    <div class="toast" role="status" aria-live="polite"></div>
+    <div class="toast glass" role="status" aria-live="polite"></div>
 </body>
 
 </html>
