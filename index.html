@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernando Véliz - Portafolio</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <a href="#">Inicio</a>
+        <a href="#">Proyectos</a>
+        <a href="#">Contacto</a>
+    </nav>
+
+    <main>
+        <!-- Fondo -->
+        <canvas id="bgCanvas"></canvas>
+
+
+        <section id="descripcion">
+            <div class="title">
+                <span>Ingeniero Civil Industrial</span>
+                <h1>Transformando desafíos en eficiencia y resultados.</h1>
+                <p>Ingeniero Civil Industrial con enfoque en mantenimiento, mejora continua y optimización de costos en
+                    la
+                    industria.</p>
+                <div class="par-botones">
+                    <button>Ver Proyectos</button>
+                    <button>Ver CV</button>
+                </div>
+            </div>
+            <div class="about glass">
+                <img id="pfp" src="bart.jpg" alt="">
+                <h2>Fernando Véliz</h2>
+                <p>Región de Coquimbo, Chile</p>
+                <p>fernando.jvelizv@gmail.com</p>
+                <div class="par-botones">
+                    <button>LinkedIn</button>
+                    <button>Github</button>
+                </div>
+            </div>
+        </section>
+        <section id="resultados">
+            <div class="metrics glass">
+                <div class="metric">
+                    <h3>1</h3>
+                    <p>Reducción de gastos</p>
+                </div>
+                <div class="metric">
+                    <h3>2</h3>
+                    <p>Reducción de mantencion</p>
+                </div>
+                <div class="metric">
+                    <h3>3</h3>
+                    <p>datos</p>
+                </div>
+                <div class="metric">
+                    <h3>4</h3>
+                    <p>km/h</p>
+                </div>
+            </div>
+        </section>
+        <section id="proyectos">
+            <div class="titular-proyectos">
+                <h2>Proyectos destacados</h2>
+                <span id="ver-todo-proyecto">Ver todos los proyectos</span>
+            </div>
+            <div class="contenedor-proyectos">
+                <div class="proyecto glass">
+                    <div class="tag">
+                        <img src="" alt="">
+                        <span>Mejora Continua</span>
+                    </div>
+                    <h4>Optimización de Costos Planta de Producción</h4>
+                    <p>Reducción de un 40% del gasto de mantencion mediante analisis de procesos.</p>
+                    <p>Ver Proyecto</p>
+                </div>
+                <div class="proyecto glass">
+                    <div class="tag">
+                        <img src="" alt="">
+                        <span>Mantenimiento</span>
+                    </div>
+                    <h4>Optimización de Costos Planta de Producción</h4>
+                    <p>Reducción de un 40% del gasto de mantencion mediante analisis de procesos.</p>
+                    <p>Ver Proyecto</p>
+                </div>
+                <div class="proyecto glass">
+                    <div class="tag">
+                        <img src="" alt="">
+                        <span>5S</span>
+                    </div>
+                    <h4>Optimización de Costos Planta de Producción</h4>
+                    <p>Reducción de un 40% del gasto de mantencion mediante analisis de procesos.</p>
+                    <p>Ver Proyecto</p>
+                </div>
+                <div class="proyecto glass">
+                    <div class="tag">
+                        <img src="" alt="">
+                        <span>Análisis</span>
+                    </div>
+                    <h4>Optimización de Costos Planta de Producción</h4>
+                    <p>Reducción de un 40% del gasto de mantencion mediante analisis de procesos.</p>
+                    <p>Ver Proyecto</p>
+                </div>
+
+            </div>
+        </section>
+
+        <script>
+            const canvas = document.getElementById("bgCanvas");
+            const ctx = canvas.getContext("2d");
+
+            const speed = 6;
+
+
+
+            let blobs = [];
+
+            // Ajustar tamaño pantalla
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener("resize", resize);
+
+            // Crear blobs
+            for (let i = 0; i < 5; i++) {
+                blobs.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: 200 + Math.random() * 150,
+                    dx: (Math.random() - 0.5) * speed,
+                    dy: (Math.random() - 0.5) * speed
+                });
+            }
+
+            // Animación
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                blobs.forEach(b => {
+                    b.x += b.dx;
+                    b.y += b.dy;
+
+                    // rebote en bordes
+                    if (b.x < 0 || b.x > canvas.width) b.dx *= -1;
+                    if (b.y < 0 || b.y > canvas.height) b.dy *= -1;
+
+                    let gradient = ctx.createRadialGradient(
+                        b.x, b.y, 0,
+                        b.x, b.y, b.r
+                    );
+
+                    gradient.addColorStop(0, "rgba(0, 200, 255, 0.25)");
+                    gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+
+                    ctx.fillStyle = gradient;
+                    ctx.beginPath();
+                    ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            // 🔥 IMPORTANTE: iniciar animación
+            animate();
+        </script>
+    </main>
+</body>
+
+</html>
